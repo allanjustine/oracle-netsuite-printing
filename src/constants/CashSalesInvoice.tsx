@@ -4,7 +4,7 @@ import DAP1Size from "@/utils/salesinvoice/global/DAP1Size";
 import DSMSISize from "@/utils/salesinvoice/global/DSMSISize";
 import DapCsiSize from "@/utils/salesinvoice/global/DapCsiSize";
 import DsmCsiSize from "@/utils/salesinvoice/global/DsmCsiSize";
-import HondaDesSize from "@/utils/salesinvoice/global/HondaDesSize";
+import HondaDesSize from "@/utils/salesinvoice/global/HdSiSize";
 import LuzonSize from "@/utils/salesinvoice/LuzonSize";
 import Size1Sales from "@/utils/salesinvoice/size1";
 import Size1SalesOld from "@/utils/salesinvoice/size1-old";
@@ -17,6 +17,8 @@ import Size6Sales from "@/utils/salesinvoice/size6";
 import Size7Sales from "@/utils/salesinvoice/size7";
 import Size8Sales from "@/utils/salesinvoice/size8";
 import Size9Sales from "@/utils/salesinvoice/size9";
+import HdSiSize from "@/utils/salesinvoice/global/HdSiSize";
+import HdCsiSizes from "@/utils/salesinvoice/global/HdCsiSize";
 
 const CashSalesInvoice: React.FC<PrintPageProps> = ({ data }) => {
   const { user } = useAuth();
@@ -254,11 +256,7 @@ const CashSalesInvoice: React.FC<PrintPageProps> = ({ data }) => {
     "BONI",
   ];
 
-  const DSMSISizeData = [
-    "DIGOS",
-    "TACU",
-    "TOMAS"
-  ]
+  const DSMSISizeData = ["DIGOS", "TACU", "TOMAS"];
   const dsmCsiSizeData = [
     "BALA",
     "CALIN",
@@ -271,6 +269,9 @@ const CashSalesInvoice: React.FC<PrintPageProps> = ({ data }) => {
     "LABA",
     "MAND2",
   ];
+
+  const hdSiSizeData = ["AURH", "CAMH", "GENT", "OROH", "TANH"];
+  const hdCsiSizeData = ["ALAH", "DSML", "PARD3", "INIT", "MARH", "VETH"];
 
   // if (size1.some((branch) => branch === user?.branchCode)) {
   //   return <Size1Sales data={data} />;
@@ -300,6 +301,10 @@ const CashSalesInvoice: React.FC<PrintPageProps> = ({ data }) => {
     return <DSMSISize data={data} />;
   } else if (dsmCsiSizeData.some((branch) => branch === user?.branchCode)) {
     return <DsmCsiSize data={data} />;
+  } else if (hdSiSizeData.some((branch) => branch === user?.branchCode)) {
+    return <HdSiSize data={data} />;
+  } else if (hdCsiSizeData.some((branch) => branch === user?.branchCode)) {
+    return <HdCsiSizes data={data} />;
   } else {
     return (
       <div className="text-center flex items-center justify-center h-screen font-bold text-lg">

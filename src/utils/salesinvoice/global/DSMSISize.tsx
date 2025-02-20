@@ -34,7 +34,7 @@ const DSMSISize: React.FC<PrintPageProps> = ({ data }) => {
 
   return (
     <div className="text-xs h-[510.23622047px] w-[778.58267717px]">
-      <div className="flex h-[18.897637795px] mt-[94.488188976px]">
+      <div className="flex h-[18.897637795px] mt-[86.9291338579px]">
         <p className="w-[461.1023622px] pl-[132.28346457px]">
           {data[1]?.[mainLineName] || ""}
         </p>
@@ -66,7 +66,7 @@ const DSMSISize: React.FC<PrintPageProps> = ({ data }) => {
           {data[1]?.[cardHolderSignatures] || ""}
         </p>
       </div>
-      <div className="mx-[37.795275591px] mt-[26.456692913px] h-[91.086614173px]">
+      <div className="mx-[32.125984252px] mt-[30.236220473px] h-[109.60629921px]">
         <table className="border-collapse w-full">
           <tbody>
             {data.slice(1, 6).map((row, index) => (

@@ -67,6 +67,17 @@ export default function Page() {
   const cashier = 25;
   const unitPrice = 26;
 
+  const CR_Date = 0;
+  const CR_Name = 1;
+  const CR_TIN = 2;
+  const CR_Address = 3;
+  const CR_BusinessStyle = 4;
+  const CR_AmountInFigures = 5;
+  const CR_AmountInWords = 6;
+  const CR_Memo = 7;
+  const CR_FormOfPayment = 8;
+  const CR_PartnerName = 9;
+
   // const billingAddress1 = 2;
   // const billingAddress2 = 3;
   // const billingAddress3 = 5;
@@ -382,7 +393,7 @@ export default function Page() {
           <div className="text-blue-500 flex justify-center items-center h-32">
             <FaCircleNotch size={50} className="animate-spin" />
           </div>
-        ) : excelData && excelData.length > 0 ? (
+        ) : excelData && excelData[0]?.length > 10 ? (
           excelData.slice(1).map((row, rowIndex, array) => (
             <div key={rowIndex} className="relative">
               <button
@@ -552,6 +563,99 @@ export default function Page() {
                       </tr>
                     </tbody>
                   </table>
+                </div>
+                <div></div>
+              </div>
+              <div
+                className={`w-full flex justify-end pr-5 py-5 my-5 bg-[#dfe4eb] 
+                  ${
+                    isHideTable[rowIndex] && rowIndex === array.length - 1
+                      ? "hidden"
+                      : ""
+                  }
+                  `}
+              />
+            </div>
+          ))
+        ) : excelData && excelData[0]?.length === 10 ? (
+          excelData.slice(1).map((row, rowIndex, array) => (
+            <div key={rowIndex} className="relative">
+              <button
+                type="button"
+                id="button-for-hide"
+                onClick={handleCloseTable(rowIndex)}
+                className="absolute -top-[48px] left-3 rounded-lg bg-[#a1c1ed] px-2 py-0.5 hover:bg-[#8caad4]"
+              >
+                {isHideTable[rowIndex] ? (
+                  <FaPlus size={13} color="#333" />
+                ) : (
+                  <FaMinus size={13} color="#333" />
+                )}
+              </button>
+              <div
+                className={`${
+                  isHideTable[rowIndex]
+                    ? "max-h-0 overflow-y-hidden"
+                    : "max-h-[1000px] overflow-y-auto"
+                } my-5 grid grid-cols-5 gap-3 text-sm text-[#333] px-10 transform transition-all duration-300 ease-in-out`}
+              >
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col">
+                    <p>Customer Name</p>
+                    <p className="font-semibold">
+                      {row[CR_Name] || "N/A"}
+                    </p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>Date</p>
+                    <p className="font-semibold">
+                      {row[CR_Date] || "N/A"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col">
+                    <p>TIN</p>
+                    <p className="font-semibold">{row[CR_TIN] || "N/A"}</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>Address</p>
+                    <p className="font-semibold">{row[CR_Address] || "N/A"}</p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col">
+                    <p>Business Style</p>
+                    <p className="font-semibold">{row[CR_BusinessStyle] || "N/A"}</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>Memo</p>
+                    <p className="font-semibold">{row[CR_Memo] || "N/A"}</p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col">
+                    <p>Amount in Figures</p>
+                    <p className="font-semibold">{row[CR_AmountInFigures] || "N/A"}</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>Amount in Words</p>
+                    <p className="font-semibold">
+                      {row[CR_AmountInWords] || "N/A"}
+                    </p>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="flex flex-col">
+                    <p>Form of Payment</p>
+                    <p className="font-semibold">{row[CR_FormOfPayment] || "N/A"}</p>
+                  </div>
+                  <div className="flex flex-col">
+                    <p>Partner Name</p>
+                    <p className="font-semibold">
+                      {row[CR_PartnerName] || "N/A"}
+                    </p>
+                  </div>
                 </div>
                 <div></div>
               </div>

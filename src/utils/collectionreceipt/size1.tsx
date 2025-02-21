@@ -29,7 +29,7 @@ const Size1Collection: React.FC<PrintPageProps> = ({ data }) => {
         <table className="text-sm">
           <tbody>
             <tr>
-              <td className="text-center h-[19px] w-[106px]"></td>
+              <td className="text-center h-[19px] w-[106px]">asd</td>
               <td className="text-center h-[19px] w-[106px]"></td>
             </tr>
             <tr className="h-[19px]"></tr>

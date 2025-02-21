@@ -6,6 +6,7 @@ import Size1Collection from "@/utils/collectionreceipt/size1";
 import Size2Collection from "@/utils/collectionreceipt/size2";
 import Size3Collection from "@/utils/collectionreceipt/size3";
 import Size4Collection from "@/utils/collectionreceipt/size4";
+import HondaDESSize from "@/utils/collectionreceipt/global/HondaDESSize";
 
 const CollectionReceipt: React.FC<PrintPageProps> = ({ data }) => {
   const { user } = useAuth();
@@ -106,6 +107,31 @@ const CollectionReceipt: React.FC<PrintPageProps> = ({ data }) => {
     "TANZ",
   ];
 
+  const HondaDESSizeData = [
+    "AURH",
+    "BALAM",
+    "BUUH",
+    "CALIN",
+    "CAMH",
+    "CARMC",
+    "DATH",
+    "DSML",
+    "GENT",
+    "GUSA",
+    "PARD3",
+    "TRINI",
+    "SDIP",
+    "INAB",
+    "KABA",
+    "MARH",
+    "OROH",
+    "OROH2",
+    "SINDA",
+    "SMCT",
+    "VETH",
+    "VILLA2"
+  ];
+
   // if (size1.some((branch) => branch === user?.branchCode)) {
   //   return <Size1Collection data={data} />;
   // } else if (size2.some((branch) => branch === user?.branchCode)) {
@@ -119,6 +145,8 @@ const CollectionReceipt: React.FC<PrintPageProps> = ({ data }) => {
   // }
   if (luzonSizeData.some((branch) => branch === user?.branchCode)) {
     return <LuzonSize data={data} />;
+  } else if (HondaDESSizeData.some((branch) => branch === user?.branchCode)) {
+    return <HondaDESSize data={data} />;
   } else {
     return (
       <div className="text-center flex items-center justify-center h-screen font-bold text-lg">

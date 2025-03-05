@@ -28,6 +28,8 @@ import Sucabon from "@/utils/collectionreceipt/global/fdl/new/dap/Sucabon";
 import MandaueMulti from "@/utils/official-receipt/global/ubbos/old/dsm/MandaueMulti";
 import HDGeneralTrias from "@/utils/collectionreceipt/global/fdl/new/hd/HDGeneralTrias";
 import HDSindangan from "@/utils/collectionreceipt/global/fdl/old/hd/HDSindangan";
+import HDDipolog from "@/utils/collectionreceipt/global/fdl/old/hd/HDDipolog";
+import HDCarmenCebu from "@/utils/collectionreceipt/global/fdl/old/hd/HDCarmenCebu";
 import Cerilles from "@/utils/official-receipt/global/ubbos/old/dsm/Cerilles";
 import Calape2 from "@/utils/official-receipt/global/fdl/old/smct/Calape2";
 import CarmenCebu2 from "@/utils/official-receipt/global/ajd/old/dsm/CarmenCebu2";
@@ -44,13 +46,13 @@ const CollectionReceipt: React.FC<PrintPageProps> = ({ data }) => {
     "BUUH",
     "CALIN",
     "CAMH",
-    "CARMC",
+    //"CARMC",
     "DATH",
     //"DSML",
     "GUSA",
     "PARD3",
     "TRINI",
-    "SDIP",
+    //"SDIP",
     "INAB",
     "KABA",
     "MARH",
@@ -226,6 +228,10 @@ const CollectionReceipt: React.FC<PrintPageProps> = ({ data }) => {
       return <HDGeneralTrias data={data} />;
     case "SINDA" === user?.branchCode:
       return <HDSindangan data={data} />;
+    case "SDIP" === user?.branchCode:
+      return <HDDipolog data={data} />;
+    case "CARMC" === user?.branchCode:
+    return <HDCarmenCebu data={data} />;
     case "CERI" === user?.branchCode:
       return <Cerilles data={data} />;
     case "CALAP2" === user?.branchCode:
